@@ -63,8 +63,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: ListView.builder(
           controller: scrollController,
-          itemCount: items.length, // Example item count
+          itemCount: items.length + (isLoading ? 1 : 0), // Example item count
           itemBuilder: (context, index) {
+            if (index == items.length) {
+              return const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Center(child: CircularProgressIndicator()),
+              );
+            }
             return ListTile(title: Text('Item $index'));
           },
         ),
