@@ -203,7 +203,7 @@ Follow the steps below to run the project locally.
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/MohmedFahmy/fluter_pagination.git
 ```
 
 ## 2️⃣ Navigate to the Project
