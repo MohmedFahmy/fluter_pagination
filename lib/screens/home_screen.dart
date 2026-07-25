@@ -10,7 +10,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController scrollController = ScrollController();
   bool isLoading = false; // Flag to indicate if more items are being loaded
-
+  final List<int> items = List.generate(20, (index) => index);
+  int _loadCount =
+      0; // Counter to keep track of how many times items have been loaded
   @override
   void initState() {
     scrollController.addListener(_onScroll);
@@ -41,6 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         isLoading = false;
+        _loadCount++;
+        items.addAll(List.generate(20, (index) => items.length + index));
       });
     });
   }
@@ -59,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: ListView.builder(
           controller: scrollController,
-          itemCount: 100, // Example item count
+          itemCount: items.length, // Example item count
           itemBuilder: (context, index) {
             return ListTile(title: Text('Item $index'));
           },
