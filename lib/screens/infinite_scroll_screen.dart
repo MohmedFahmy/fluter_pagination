@@ -65,7 +65,7 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     });
 
     // Simulate API request
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     if (!mounted) return;
 

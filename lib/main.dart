@@ -22,7 +22,7 @@ class PaginationApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pagination App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 3, 68, 121)),
         useMaterial3: true,
       ),
       home: const HomeScreen(),

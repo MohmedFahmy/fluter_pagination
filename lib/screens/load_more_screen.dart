@@ -37,7 +37,7 @@ class _LoadMoreScreenState extends State<LoadMoreScreen> {
       _isLoading = true;
     });
 
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 300));
 
     if (!mounted) return;
 
