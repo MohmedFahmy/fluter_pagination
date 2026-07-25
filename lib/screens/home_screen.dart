@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController scrollController = ScrollController();
+  bool isLoading = false; // Flag to indicate if more items are being loaded
 
   @override
   void initState() {
@@ -17,14 +18,37 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onScroll() {
+    if (isLoading) return;
     final maxScroll = scrollController.position.maxScrollExtent;
     final currentScroll = scrollController.position.pixels;
+    final treggerDistance =
+        200.0; // Distance from the bottom to trigger loading more items
     print('Max Scroll: $maxScroll, Current Scroll: $currentScroll');
+
+    if (currentScroll >= maxScroll - treggerDistance) {
+      // Load more items here
+      print('Load more items');
+      _loadMoreItems();
+    }
+  }
+
+  void _loadMoreItems() {
+    // Simulate loading more items (you can replace this with your actual logic)
+    setState(() {
+      isLoading = true;
+    });
+
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        isLoading = false;
+      });
+    });
   }
 
   @override
   void dispose() {
     scrollController.dispose();
+    scrollController.removeListener(_onScroll);
     super.dispose();
   }
 
